@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
     - uses: actions/checkout@v3
@@ -27,12 +27,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          envkey_PORT: ${{ secrets.PORT }}
-          # envkey_MONGODB_URI: ${{ secrets.MONGODB_URI }}
-          file_name: .env
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
