@@ -16,5 +16,18 @@ app.use(morgan('dev'));
 app.get("/", (req, res) => {
     return res.send("Hello World!");
 })
+app.get('/orders', (req, res) => {
+    const orders = [
+        {
+            id: 1,
+            price: 100
+        },
+        {
+            id: 2,
+            price: 1000
+        }
+    ]
+    return res.status(200).json(orders);
+});
 app.listen(port, () => console.log(colors.green(`Server listening on http://localhost:${port}`)));
 module.exports = app;
